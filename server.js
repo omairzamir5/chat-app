@@ -12,10 +12,12 @@ const io = socketIO(server);
 const port = process.env.PORT || 3000;
 const users = {}
 
-// const publicPath = path.join(__dirname + "/../public");
-// app.use(express.static(publicPath));
+const publicPath = path.join(__dirname + "/public");
+app.use(express.static(publicPath));
 
 io.on('connection', socket => {
+    
+    console.log('Made new Socker');
     
     socket.on('new-user', name => {
         users[socket.id] = name
